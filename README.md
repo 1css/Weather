@@ -76,7 +76,7 @@ docker run -p 3000:3000 --env-file .env weather-app
 2.Access the Application:
 Open a browser and navigate to http://localhost:3000
 
-Project Structure:
+## Project Structure:
 
 ![Weather Dashboard Screenshot](https://raw.githubusercontent.com/1css/Weather/main/public/images/project%20structure.JPG)
 
