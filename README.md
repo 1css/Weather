@@ -19,10 +19,15 @@ Project Structure
 The Weather Application displays current weather information by fetching data from an external weather API. This project is built in ReactJS, with an option to containerize dependencies using Docker or Podman for a consistent and isolated development environment.
 
 ##### Features
-1.Real-time weather data updates
-2.Location-based or city-input weather search
-3.Responsive design for various screen sizes
-4.User-friendly interface
+
+1. **Real-time weather data updates**
+
+2. **Location-based or city-input weather search**
+
+3. **Responsive design for various screen sizes**
+
+4. **User-friendly interface**
+
 
 Prerequisites
 Docker or Podman: Required for running the application in a containerized environment.
