@@ -44,10 +44,10 @@ Create a .env file in the root directory (this file is not included in the repos
 
 Add your environment variables (e.g., API keys for weather data) as required. Here is an example of what the .env file might look like:
 
-[REACT_APP_WEATHER_API_KEY=your_api_key_here
-REACT_APP_YOUR_SERVICE_ID=service id
-REACT_APP_YOUR_TEMPLATE_ID=templete_id
-REACT_APP_YOUR_PUBLIC_KEY=public_id](url)
+REACT_APP_WEATHER_API_KEY=your_api_key_here \
+REACT_APP_YOUR_SERVICE_ID=service id \
+REACT_APP_YOUR_TEMPLATE_ID=templete_id \
+REACT_APP_YOUR_PUBLIC_KEY=public_id \
 
 You’ll need to sign up for a free API key to access weather data, e.g., from OpenWeather. The API provides various weather parameters.
 
