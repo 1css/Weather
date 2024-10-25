@@ -77,22 +77,12 @@ docker run -p 3000:3000 --env-file .env weather-app
 Open a browser and navigate to http://localhost:3000
 
 Project Structure:
+
 ![Weather Dashboard Screenshot](https://raw.githubusercontent.com/1css/Weather/main/public/images/project%20structure.JPG)
 
 
 
-weather/
-│
-├── .dockerignore         # Ignore file for Docker
-├── .env                  # Environment variables (not in repository)
-├── .gitignore            # Ignore file for Git
-├── Dockerfile            # Docker configuration
-├── node_modules/         # Node modules and dependencies
-├── package.json          # Project metadata and scripts
-├── package-lock.json     # Locked package versions
-├── public/               # Public assets and HTML template
-├── src/                  # React components, styles, and utilities
-└── README.md             # Project documentation
+
 
 #### Design Choices:
 1.React Functional Components: The app uses functional components for simplicity, readability, and maintainability.
