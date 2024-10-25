@@ -77,6 +77,8 @@ docker run -p 3000:3000 --env-file .env weather-app
 Open a browser and navigate to http://localhost:3000
 
 Project Structure:
+![Weather Dashboard Screenshot](public/images/project structure.JPG)
+
 weather/
 │
 ├── .dockerignore         # Ignore file for Docker
@@ -98,15 +100,6 @@ weather/
 
 
 
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-### `npm start`
 
 
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
