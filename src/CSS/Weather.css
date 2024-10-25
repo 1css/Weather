@@ -118,27 +118,20 @@
 
 
 
-/* .search-bar {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-} */
+
 
 .search-icon {
-  width: 40px; /* Set width to match input height */
-  height: 40px; /* Set height to match input height */
-  cursor: pointer; /* Pointer on hover */
+  width: 40px; 
+  height: 40px; 
+  cursor: pointer; 
 }
 
-/* Hover effect for image */
+
 .search-icon:hover {
-  opacity: 0.8; /* Slightly change opacity on hover */
+  opacity: 0.8; 
 }
 
 
-/* .search-bar img {
-  width: 20px; 
-} */
+
 
 
