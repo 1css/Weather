@@ -4,7 +4,7 @@ This project is a weather application built with ReactJS, providing real-time we
 
 ---
 
-Table of Contents
+### Table of Contents
 Overview \
 Features \
 Prerequisites \
@@ -12,7 +12,7 @@ Installation and Setup \
 Running the Application \
 Project Structure
 
----
+
 
 
 ### Overview
