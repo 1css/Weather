@@ -56,24 +56,24 @@ You’ll need to sign up for a free API key to access weather data, e.g., from O
 
 #### Build the Docker Image (optional for containerized deployment):
 Ensure Docker or Podman is installed and running.
-Build the Docker image using the Dockerfile:
+Build the Docker image using the Dockerfile:\
 
 `docker build -t weather-app .`
 
 # Running the Application
 ## Running with Docker
 
-1.Run the Application in a Container:
+1.Run the Application in a Container: \
 docker run -p 3000:3000 --env-file .env weather-app
 
-2.Access the Application:
+2.Access the Application: \
  Open a browser and navigate to http://localhost:3000
 
 ## Running Locally
-1.Start the Development Server:
+1.Start the Development Server: \
 `npm start`
 
-2.Access the Application:
+2.Access the Application: \
 Open a browser and navigate to http://localhost:3000
 
 ## Project Structure:
