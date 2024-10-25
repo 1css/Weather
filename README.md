@@ -85,10 +85,13 @@ Open a browser and navigate to http://localhost:3000
 
 
 #### Design Choices:
-1.React Functional Components: The app uses functional components for simplicity, readability, and maintainability.
-2.Responsive Design: Designed to work well on mobile, tablet, and desktop screens.
-3.API-based Data Fetching: The application retrieves weather data via an API, allowing flexibility in choosing weather data providers.
-4.Dockerization: Docker support is included for consistent setup and easy deployment.
+1. **React Functional Components**: The app uses functional components for simplicity, readability, and maintainability.
+
+2. **Responsive Design**: Designed to work well on mobile, tablet, and desktop screens.
+
+3. **API-based Data Fetching**: The application retrieves weather data via an API, allowing flexibility in choosing weather data providers.
+
+4. **Dockerization**: Docker support is included for consistent setup.
 
 
 
