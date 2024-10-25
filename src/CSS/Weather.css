@@ -12,17 +12,20 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  width: 100%;
 }
 
 .search-bar input {
   height: 40px;
   border: none;
   outline: none;
-  border-radius: 40px;
+  border-radius: 50px;
   color: #626262;
   background: #ebfffc;
-  padding-left: 25px;
+  padding-left: 15px;
   font-size: 18px;
+  flex: 1; 
+  
 }
 
 .search-bar img {
@@ -82,7 +85,7 @@
 }
 
 .weather_data .col img {
-  width: 30px;
+  /* width: 30px; */
   margin-top: 14px;
 }
 
@@ -112,3 +115,30 @@
   justify-content: center; /* Center vertically */
   align-items: center;
 }
+
+
+
+/* .search-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+} */
+
+.search-icon {
+  width: 40px; /* Set width to match input height */
+  height: 40px; /* Set height to match input height */
+  cursor: pointer; /* Pointer on hover */
+}
+
+/* Hover effect for image */
+.search-icon:hover {
+  opacity: 0.8; /* Slightly change opacity on hover */
+}
+
+
+/* .search-bar img {
+  width: 20px; 
+} */
+
+

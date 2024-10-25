@@ -9,7 +9,16 @@ import Rain_icon from "../Assets/rain.png";
 import Snow_icon from "../Assets/snow.png";
 import Wind_icon from "../Assets/wind.png";
 import { Line } from "react-chartjs-2";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import  Loader  from "./Loader";
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  InputGroup,
+  Button,
+  FormControl,
+} from "react-bootstrap";
 import {
   Chart as ChartJS,
   LineElement,
@@ -21,7 +30,15 @@ import {
   Legend,
 } from "chart.js";
 
-ChartJS.register(LineElement, PointElement, LinearScale, CategoryScale, Title, Tooltip, Legend);
+ChartJS.register(
+  LineElement,
+  PointElement,
+  LinearScale,
+  CategoryScale,
+  Title,
+  Tooltip,
+  Legend
+);
 
 function Weather() {
   const [weather_data, setWeatherData] = useState(false);
@@ -29,6 +46,7 @@ function Weather() {
   const [dailySummary, setDailySummary] = useState(null);
   const [alert, setAlert] = useState(null);
   const [threshold, setThreshold] = useState(35);
+  const [loading, setLoading] = useState(false);
 
   const inputRef = useRef();
 
@@ -55,6 +73,7 @@ function Weather() {
       return;
     }
     try {
+      setLoading(true)
       const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.REACT_APP_WEATHER_API_KEY}`;
 
       const res = await fetch(url);
@@ -92,7 +111,10 @@ function Weather() {
 
       console.log(newWeatherData);
     } catch (error) {
+      setLoading(false)
       console.log(error, "err");
+    }finally{
+      setLoading(false)
     }
   };
 
@@ -192,107 +214,115 @@ function Weather() {
 
   return (
     <>
-      <div className="d-flex justify-content-lg-center justify-content-xl-center justify-content-md-center container-sm mt-3">
-        <Col lg={3} xl={3} sm={10} md={4} className="checkbd">
-          <div className="search-bar ">
-            <input type="text" placeholder="Search" ref={inputRef} />
-            <img
-              src={Search_icon}
-              alt="not found icon"
-              onClick={() => fetchWeatherFromAPI(inputRef.current.value)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  fetchWeatherFromAPI(inputRef.current.value); // Call the search function when Enter is pressed
-                }
-              }}
-            />
-          </div>
-          {weather_data ? (
-            <>
-              <img
-                src={weather_data.icon}
-                alt="not found icon"
-                className="weather_icon"
+      {loading ? (
+        <Loader />
+      ) : (
+        <div className="d-flex justify-content-lg-center justify-content-xl-center justify-content-md-center container-sm mt-3">
+          <Col lg={3} xl={3} sm={10} md={4} className="checkbd">
+            <div className="search-bar d-flex align-items-center">
+              <input
+                type="text"
+                placeholder="Search"
+                ref={inputRef}
+                className="form-control me-2"
               />
-              <p className="temperature">{weather_data.temperature} °C</p>
-              <p className="location">{weather_data.location}</p>
+              <img
+                src={Search_icon}
+                alt="Search icon"
+                className="search-icon"
+                onClick={() => fetchWeatherFromAPI(inputRef.current.value)}
+              />
+            </div>
+            {weather_data ? (
+              <>
+                <img
+                  src={weather_data.icon}
+                  alt="not found icon"
+                  className="weather_icon"
+                />
+                <p className="temperature">{weather_data.temperature} °C</p>
+                <p className="location">{weather_data.location}</p>
 
-              <p className="Time">Time:{timeConverter(weather_data.date)}</p>
+                <p className="Time">Time: {timeConverter(weather_data.date)}</p>
+                <p className="Feels_like">
+                  Feels_like: {weather_data.feels_like}
+                </p>
+                <div className="weather_data">
+                  <div className="col">
+                    <img src={Humidity_icon} alt="not found" />
+                    <div>
+                      <p>{weather_data.humidity} %</p>
+                      <span>humidity</span>
+                    </div>
+                  </div>
 
-              <p className="Feels_like">Feels_like:{weather_data.feels_like}</p>
-              <div className="weather_data">
-                <div className="col">
-                  <img src={Humidity_icon} alt="not found" />
-                  <div>
-                    <p>{weather_data.humidity} %</p>
-                    <span>humdity</span>
+                  <div className="col">
+                    <img src={Wind_icon} alt="not found" />
+                    <div>
+                      <p className="d-flex">{weather_data.windSpeed} km/h</p>
+                      <span className="wind-name">Wind</span>
+                    </div>
                   </div>
                 </div>
+              </>
+            ) : (
+              <></>
+            )}
+          </Col>
+        </div>
+      )}
 
-                <div className="col">
-                  <img src={Wind_icon} alt="not found" />
-                  <div>
-                    <p className="d-flex">{weather_data.windSpeed} km/h</p>
-                    <span className="wind-name">Wind</span>
-                  </div>
-                </div>
-              </div>
-            </>
-          ) : (
-            <></>
+      {!loading && (
+        <Container className="mt-4">
+          {dailySummary && (
+            <Row className="justify-content-center">
+              <Col lg={4} md={6} sm={10} xs={12} className="mb-4">
+                <Card className="p-3 shadow-sm">
+                  <Card.Body>
+                    <Card.Title className="text-center">
+                      Daily Weather Summary
+                    </Card.Title>
+                    <Card.Text>
+                      Average Temperature: {dailySummary.avgTemp}°C
+                    </Card.Text>
+                    <Card.Text>
+                      Maximum Temperature: {dailySummary.maxTemp}°C
+                    </Card.Text>
+                    <Card.Text>
+                      Minimum Temperature: {dailySummary.minTemp}°C
+                    </Card.Text>
+                    <Card.Text>
+                      Condition: {dailySummary.dominantCondition}
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </Col>
+            </Row>
           )}
-        </Col>
-      </div>
 
-      <Container className="mt-4">
-        {/* Daily Summary Section */}
-        {dailySummary && (
           <Row className="justify-content-center">
-            <Col lg={4} md={6} sm={10} xs={12} className="mb-4">
+            <Col lg={8} md={10} sm={12} className="mb-4">
               <Card className="p-3 shadow-sm">
                 <Card.Body>
                   <Card.Title className="text-center">
-                    Daily Weather Summary
+                    Temperature Trend
                   </Card.Title>
-                  <Card.Text>
-                    Average Temperature: {dailySummary.avgTemp}°C
-                  </Card.Text>
-                  <Card.Text>
-                    Maximum Temperature: {dailySummary.maxTemp}°C
-                  </Card.Text>
-                  <Card.Text>
-                    Minimum Temperature: {dailySummary.minTemp}°C
-                  </Card.Text>
-                  <Card.Text>
-                    Condition: {dailySummary.dominantCondition}
-                  </Card.Text>
+                  <div className="chart-container">
+                    <Line
+                      data={chartData}
+                      options={{ responsive: true, maintainAspectRatio: false }}
+                    />
+                  </div>
                 </Card.Body>
               </Card>
             </Col>
           </Row>
-        )}
-
-        {/* Temperature Trend Chart Section */}
-        <Row className="justify-content-center">
-          <Col lg={8} md={10} sm={12} className="mb-4">
-            <Card className="p-3 shadow-sm">
-              <Card.Body>
-                <Card.Title className="text-center">
-                  Temperature Trend
-                </Card.Title>
-                <div className="chart-container">
-                  <Line
-                    data={chartData}
-                    options={{ responsive: true, maintainAspectRatio: false }}
-                  />
-                </div>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-      </Container>
+        </Container>
+      )}
     </>
   );
 }
 
 export default Weather;
+
+
