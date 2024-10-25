@@ -64,7 +64,7 @@ Build the Docker image using the Dockerfile:\
 ## Running with Docker
 
 1.Run the Application in a Container: \
-docker run -p 3000:3000 --env-file .env weather-app
+`docker run -p 3000:3000 --env-file .env weather-app`
 
 2.Access the Application: \
  Open a browser and navigate to http://localhost:3000
