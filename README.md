@@ -12,7 +12,7 @@ Installation and Setup
 Running the Application
 Project Structure
 
---
+---
 
 
 ### Overview
@@ -38,7 +38,7 @@ React: The frontend library for building the user interface.
    git clone https://github.com/yourusername/weather-app.git
    cd weather-app
 
-#### Environment Variables:
+### Environment Variables:
 
 Create a .env file in the root directory (this file is not included in the repository for security reasons).
 
@@ -51,14 +51,14 @@ REACT_APP_YOUR_PUBLIC_KEY=public_id
 
 You’ll need to sign up for a free API key to access weather data, e.g., from OpenWeather. The API provides various weather parameters.
 
-#### Install Dependencies:
-npm install
+### `Install Dependencies`:
+`npm install`
 
 #### Build the Docker Image (optional for containerized deployment):
 Ensure Docker or Podman is installed and running.
 Build the Docker image using the Dockerfile:
 
-docker build -t weather-app .
+`docker build -t weather-app .`
 
 # Running the Application
 ## Running with Docker
@@ -71,7 +71,7 @@ docker run -p 3000:3000 --env-file .env weather-app
 
 ## Running Locally
 1.Start the Development Server:
-npm start
+`npm start`
 
 2.Access the Application:
 Open a browser and navigate to http://localhost:3000
